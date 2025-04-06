@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 8 - Decent Work & Economic Growth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #7c0f30;
+            --secondary-color: #ec9934;
+            --dark-color: #091a2d;
+            --light-color: #F5F7FA;
+            --success-color: #38a0c2;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #560577);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #1c13a4;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--dark-color);
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 0.5rem auto;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .targets {
+            background-color: #f0f4f8;
+        }
+        
+        .targets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .target-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .target-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .target-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .target-card-content {
+            padding: 1.5rem;
+        }
+        
+        .target-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .target-card .target-number {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-section {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .progress-section .section-title h2 {
+            color: white;
+        }
+        
+        .progress-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .progress-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .progress-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .circle-bg {
+            fill: none;
+            stroke: #2C3E50;
+            stroke-width: 10;
+        }
+        
+        .circle-progress {
+            fill: none;
+            stroke: var(--secondary-color);
+            stroke-width: 10;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 1.5s ease;
+        }
+        
+        .circle-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .progress-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .solutions {
+            text-align: center;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .solution-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+        
+        .solution-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .solution-card ul {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+        }
+        
+        .solution-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .newsletter {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            padding: 0 1.5rem;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #0a59a4;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: all 0.5s ease;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 4px;
+            }
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .slide-up {
+            animation: slideUp 1s ease forwards;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Interactive elements */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#targets">Targets</a></li>
+                    <li><a href="#progress">Progress</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#get-involved" class="btn btn-outline">Get Involved</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content slide-up">
+            <h2>Decent Work and Economic Growth</h2>
+            <p>"Let's create a world where everyone can find meaningful work, grow their careers, and thrive in a strong, inclusive economy."</p>
+            <div>
+                <a href="#solutions" class="btn">Explore Solutions</a>
+                <a href="#get-involved" class="btn btn-outline">Take Action</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>About Our Topic</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Why does decent work and economic growth matter?</h3>
+                    <p>To grow our economy in a healthy and lasting way, we need to make sure everyone has access to good jobs that support both people and the planet. Creating work opportunities in safe and respectful environments is essential for every adult who wants to earn and live with dignity.</p>
+                    <p>People need better access to financial services so they can save money, invest in their future, and grow their income. At the same time, improving trade, banking, and farming infrastructure—especially in poorer areas—can boost productivity and create more jobs.</p>
+                    <p>By 2030, everyone—women, men, young people, and people with disabilities—should have access to fair, meaningful jobs. And no matter who you are, equal work should mean equal pay.</p>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Diverse team working together">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="targets" class="targets">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>SDG 8 Targets</h2>
+            </div>
+            <div class="targets-grid">
+                <div class="target-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Economic growth">
+                    <div class="target-card-content">
+                        <div class="target-number">8.1</div>
+                        <h3>Sustain Economic Growth</h3>
+                        <p>Every country should grow its economy in a way that fits its own needs—and for the world’s poorest countries, that means aiming for at least 7% growth each year to lift more people out of poverty.</p>
+                    </div>
+                </div>
+                <div class="target-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Diversified economy">
+                    <div class="target-card-content">
+                        <div class="target-number">8.2</div>
+                        <h3>Diversify and Upgrade Economies</h3>
+                        <p>To boost the economy, we need to focus on innovation, smart use of technology, and creating diverse industries—especially those that create more jobs and add real value.</p>
+                    </div>
+                </div>
+                <div class="target-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Entrepreneurship">
+                    <div class="target-card-content">
+                        <div class="target-number">8.3</div>
+                        <h3>Promote Entrepreneurship</h3>
+                        <p>We need policies that support people in starting businesses, creating decent jobs, and turning ideas into reality—especially by helping small and local businesses grow and succeed.</p>
+                    </div>
+                </div>
+                <div class="target-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Resource efficiency">
+                    <div class="target-card-content">
+                        <div class="target-number">8.4</div>
+                        <h3>Improve Resource Efficiency</h3>
+                        <p>By 2030, we should use the world’s resources more wisely—producing and consuming in smarter ways that help the economy grow without harming the environment.</p>
+                    </div>
+                </div>
+                <div class="target-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Full employment">
+                    <div class="target-card-content">
+                        <div class="target-number">8.5</div>
+                        <h3>Full Employment & Decent Work</h3>
+                        <p>By 2030, everyone—regardless of gender, age, or ability—should have access to meaningful work and fair pay for the work they do.</p>
+                    </div>
+                </div>
+                <div class="target-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Youth employment">
+                    <div class="target-card-content">
+                        <div class="target-number">8.6</div>
+                        <h3>Reduce Youth Unemployment</h3>
+                        <p> Young people deserve a better future—so we need to make sure more of them have access to jobs, education, or skills training.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="progress" class="progress-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Global Progress</h2>
+                <p>Here's how we're doing in achieving the targets for Decent Work and Economic Growth worldwide.</p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-item fade-in">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle-progress" stroke-dasharray="65, 100" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="circle-text">65%</div>
+                    </div>
+                    <h3>Economic Growth</h3>
+                    <p>Many countries are making progress and are on track to meet their economic growth goals.</p>
+                </div>
+                <div class="progress-item fade-in">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle-progress" stroke-dasharray="42, 100" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="circle-text">42%</div>
+                    </div>
+                    <h3>Youth Employment</h3>
+                    <p>Since 2015, fewer young people are out of school or without jobs—which is a step in the right direction.</p>
+                </div>
+                <div class="progress-item fade-in">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle-progress" stroke-dasharray="78, 100" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="circle-text">78%</div>
+                    </div>
+                    <h3>Labor Rights</h3>
+                    <p>A growing number of countries have strengthened protections for workers and their rights.</p>
+                </div>
+                <div class="progress-item fade-in">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle-progress" stroke-dasharray="35, 100" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="circle-text">35%</div>
+                    </div>
+                    <h3>Resource Efficiency</h3>
+                    <p>Improvement in global resource efficiency since 2015</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Solutions & Actions</h2>
+                <p>What can we do to achieve the goal of Decent Work and Economic Growth?</p>
+            </div>
+            
+            <div class="tabs fade-in">
+                <button class="tab-btn active" data-tab="governments">Governments</button>
+                <button class="tab-btn" data-tab="businesses">Businesses</button>
+                <button class="tab-btn" data-tab="individuals">Individuals</button>
+            </div>
+            
+            <div class="tab-content active" id="governments">
+                <div class="solution-card fade-in">
+                    <h3>Policy Actions for Governments</h3>
+                    <ul>
+                        <li>We need to create more jobs and support people who want to start their own businesses.</li>
+                        <li>Everyone deserves fair treatment at work and a safe place to do their job.</li>
+                        <li>We need to invest in education and skill training so people are ready for the jobs of tomorrow.</li>
+                        <li>Let’s support tourism that not only creates jobs but also celebrates and protects local culture and communities.</li>
+                        <li>We should create policies that make it easier for small businesses to access banking, credit, and financial support.</li>
+                    </ul>
+                    <p>Governments have a big responsibility—they need to set fair rules that help the economy grow, protect workers, and take care of the environment.</p>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="businesses">
+                <div class="solution-card fade-in">
+                    <h3>Actions for Businesses</h3>
+                    <ul>
+                        <li>Businesses should grow in ways that are good for people and the planet—while also creating fair and decent jobs.</li>
+                        <li>Everyone should be paid fairly for the work they do—no matter their gender, background, or identity.</li>
+                        <li>Companies should help their employees grow by investing in training and skill-building.</li>
+                        <li>Give young people a strong start by offering internships and hands-on training opportunities.</li>
+                        <li>We need strong rules to stop child labor and forced labor, especially in the companies that supply our goods.</li>
+                    </ul>
+                    <p>Businesses help drive the economy forward—and they also have a responsibility to make sure that growth benefits everyone, not just a few.</p>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="individuals">
+                <div class="solution-card fade-in">
+                    <h3>What Individuals Can Do</h3>
+                    <ul>
+                        <li>Choose to support brands that treat their workers fairly and follow ethical trade practices.</li>
+                        <li>Keep learning and building new skills—it’s the best way to stay ready for future job opportunities.</li>
+                        <li>Social entrepreneurship uses innovative solutions to tackle community problems while making a positive, lasting impact.</li>
+                        <li>Stand up for fair wages and better working conditions to ensure everyone is treated with respect and dignity at work.</li>
+                        <li>Back policies that create good jobs and boost economic growth for a stronger, more sustainable future.</li>
+                    </ul>
+                    <p>Everyone has a part to play in building an economy that works for all, whether through personal choices or coming together to push for change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-involved" class="newsletter">
+        <div class="container">
+            <h2 class="fade-in">Get Involved</h2>
+            <p class="fade-in">Join our global community working towards decent work and sustainable economic growth for all.</p>
+            <form class="newsletter-form slide-up">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Decent Work and Economic Growth</h3>
+                    <ul>
+                        <li><a href="#">Why it matters</a></li>
+                        <li><a href="#">Targets & Indicators</a></li>
+                        <li><a href="#">Progress Reports</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Take Action</h3>
+                    <ul>
+                        <li><a href="#">For Businesses</a></li>
+                        <li><a href="#">For Governments</a></li>
+                        <li><a href="#">For Individuals</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Data & Statistics</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Toolkits</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p style="margin-top: 1rem;">Email: vandana1224gdg@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Decent Work And Economic Growth. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Tab functionality with enhanced animation
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        function switchTab(tabId) {
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.setAttribute('aria-hidden', 'true');
+            });
+            
+            // Add active class to clicked button and corresponding content
+            const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+            const activeContent = document.getElementById(tabId);
+            
+            if (activeBtn && activeContent) {
+                activeBtn.classList.add('active');
+                activeBtn.setAttribute('aria-selected', 'true');
+                activeContent.classList.add('active');
+                activeContent.setAttribute('aria-hidden', 'false');
+                
+                // Add animation to the newly shown content
+                const solutionCard = activeContent.querySelector('.solution-card');
+                if (solutionCard) {
+                    solutionCard.style.animation = 'none';
+                    void solutionCard.offsetWidth; // Trigger reflow
+                    solutionCard.style.animation = 'fadeIn 0.5s ease forwards';
+                }
+            }
+        }
+
+        // Add click event to all tab buttons
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                switchTab(tabId);
+            });
+            
+            // Add keyboard navigation support
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const tabId = btn.getAttribute('data-tab');
+                    switchTab(tabId);
+                }
+            });
+        });
+
+        // Initialize the first tab as active on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('governments');
+            
+            // Animate progress circles
+            const circles = document.querySelectorAll('.circle-progress');
+            circles.forEach(circle => {
+                const percent = circle.getAttribute('stroke-dasharray').split(',')[0];
+                circle.style.strokeDashoffset = 100 - percent;
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in, .slide-up');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialize animations
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                if (emailInput.value) {
+                    alert('Thank you for subscribing! We’ll keep you updated on initiatives related to Decent Work and Economic Growth.');
+                    emailInput.value = '';
+                }
+            });
+        }
+    </script>
